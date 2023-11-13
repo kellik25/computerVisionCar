@@ -29,10 +29,6 @@ while(True):
         # compute the center of the contour
         M = cv2.moments(c)
         area = cv2.contourArea(c)
-        #if have more than one red object for right now just have 1 so don't need
-        #areas = [row[0] for row in info]
-        #order = np.flip(np.argsort(areas))
-        #area = info(order[0])
         if area > 35:
             if M["m00"] != 0:
                 cX = int(M['m10']/M['m00'])
@@ -42,7 +38,6 @@ while(True):
             else:
                 cX, cY = 0,0
             info.append([area, cX, cY])
-            #print(info[0])
             cv2.drawContours(cv2_frame, [c], -1, (0, 255, 0), thickness=cv2.FILLED)
             cv2.circle(cv2_frame, (cX, cY), 7, (255, 0, 0), -1)
             cv2.putText(cv2_frame, "center", (cX - 20, cY - 20),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
