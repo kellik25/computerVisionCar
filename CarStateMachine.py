@@ -1,7 +1,4 @@
 import time
-from hub import light_matrix
-from hub import light
-import color
 from hub import port
 import motor
 import uasyncio as asyncio
